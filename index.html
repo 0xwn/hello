@@ -1,16 +1,652 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>we won't forget.</title>
-</head>
-<body>
-    <div class="container">
-        <h1>sec.</h1>
-        <p class="f">they can't find us.</p>
-        <img src="not.png" alt="">
+<html><head><base href="https://lgwn.hack/"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>lgwn | Hacker's Haven</title><script src="https://unpkg.com/vue@3/dist/vue.global.js"></script><script src="https://cdn.tailwindcss.com"></script><link href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script><style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+    
+    :root {
+      --primary-color: #ffffff;
+      --background-color: #000000;
+      --accent-color: #00ff00;
+    }
+    
+    body {
+      font-family: 'Space Mono', monospace;
+      background-color: var(--background-color);
+      color: var(--primary-color);
+      overflow-x: hidden;
+    }
+    
+    .glitch {
+      position: relative;
+      font-size: 6rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary-color);
+    }
+    
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .glitch::before {
+      left: 2px;
+      text-shadow: -2px 0 var(--accent-color);
+      clip: rect(24px, 550px, 90px, 0);
+      animation: glitch-anim 3s infinite linear alternate-reverse;
+    }
+    
+    .glitch::after {
+      left: -2px;
+      text-shadow: -2px 0 var(--accent-color);
+      clip: rect(85px, 550px, 140px, 0);
+      animation: glitch-anim 2s infinite linear alternate-reverse;
+    }
+    
+    @keyframes glitch-anim {
+      0% {
+        clip: rect(14px, 9999px, 39px, 0);
+      }
+      5% {
+        clip: rect(62px, 9999px, 95px, 0);
+      }
+      10% {
+        clip: rect(58px, 9999px, 99px, 0);
+      }
+      15% {
+        clip: rect(100px, 9999px, 12px, 0);
+      }
+      20% {
+        clip: rect(43px, 9999px, 77px, 0);
+      }
+      25% {
+        clip: rect(24px, 9999px, 36px, 0);
+      }
+      30% {
+        clip: rect(76px, 9999px, 14px, 0);
+      }
+      35% {
+        clip: rect(89px, 9999px, 52px, 0);
+      }
+      40% {
+        clip: rect(68px, 9999px, 32px, 0);
+      }
+      45% {
+        clip: rect(94px, 9999px, 9px, 0);
+      }
+      50% {
+        clip: rect(19px, 9999px, 86px, 0);
+      }
+      55% {
+        clip: rect(63px, 9999px, 45px, 0);
+      }
+      60% {
+        clip: rect(2px, 9999px, 25px, 0);
+      }
+      65% {
+        clip: rect(52px, 9999px, 74px, 0);
+      }
+      70% {
+        clip: rect(90px, 9999px, 34px, 0);
+      }
+      75% {
+        clip: rect(77px, 9999px, 61px, 0);
+      }
+      80% {
+        clip: rect(39px, 9999px, 98px, 0);
+      }
+      85% {
+        clip: rect(81px, 9999px, 5px, 0);
+      }
+      90% {
+        clip: rect(46px, 9999px, 57px, 0);
+      }
+      95% {
+        clip: rect(1px, 9999px, 83px, 0);
+      }
+      100% {
+        clip: rect(70px, 9999px, 21px, 0);
+      }
+    }
+    
+    .matrix-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.1;
+    }
+    
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    a:hover {
+      color: var(--accent-color);
+    }
+    
+    .border-white {
+      border-color: var(--primary-color);
+    }
+    
+    .hover\:text-accent:hover {
+      color: var(--accent-color);
+    }
+    
+    .hover\:bg-accent:hover {
+      background-color: var(--accent-color);
+    }
+    
+    .hover\:text-black:hover {
+      color: var(--background-color);
+    }
+    
+    .content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .text-left {
+      text-align: left;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    .flex-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .section-heading {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-heading::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50%;
+      height: 4px;
+      background-color: var(--accent-color);
+    }
+    
+    .card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 255, 0, 0.1);
+    }
+    
+    .scroll-indicator {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 50px;
+      border: 2px solid var(--primary-color);
+      border-radius: 15px;
+      cursor: pointer;
+    }
+    
+    .scroll-indicator::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      margin-left: -3px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      animation: scroll-indicator 2s infinite;
+    }
+    
+    @keyframes scroll-indicator {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(15px);
+        opacity: 0;
+      }
+    }
+    
+    .terminal-effect {
+      display: inline-block;
+      position: relative;
+      font-family: 'Space Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      text-transform: lowercase;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 0.15em solid var(--accent-color);
+      margin: 0 auto;
+      letter-spacing: 0.1em;
+      animation: typing 3.5s steps(4, end), blink-caret 0.75s step-end infinite;
+    }
+    
+    .terminal-window {
+      background-color: #0C0C0C;
+      border-radius: 5px;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0, 255, 0, 0.1);
+      display: inline-block;
+      max-width: 300px;
+    }
+    
+    .terminal-header {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 10px;
+    }
+    
+    .terminal-button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+    
+    .terminal-button.close {
+      background-color: #FF5F56;
+    }
+    
+    .terminal-button.minimize {
+      background-color: #FFBD2E;
+    }
+    
+    .terminal-button.maximize {
+      background-color: #27C93F;
+    }
+    
+    .terminal-content {
+      font-family: 'Space Mono', monospace;
+      color: var(--accent-color);
+    }
+    
+    .terminal-prompt::before {
+      content: "$ ";
+      color: var(--primary-color);
+    }
+    
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: var(--accent-color) }
+    }
+    
+    .easter-egg {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .easter-egg:hover {
+      opacity: 1;
+    }
+    
+    .konami-code {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      font-size: 12px;
+      color: var(--accent-color);
+      opacity: 0.5;
+    }
+    
+    .secret-message {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: var(--background-color);
+      border: 2px solid var(--accent-color);
+      padding: 20px;
+      z-index: 1000;
+    }
+    
+    .reverse-shell-terminal {
+      background-color: #0C0C0C;
+      border-radius: 5px;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0, 255, 0, 0.1);
+      font-family: 'Space Mono', monospace;
+      color: var(--accent-color);
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      overflow-y: auto;
+      margin-top: 20px;
+    }
+    
+    .reverse-shell-terminal::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    .reverse-shell-terminal::-webkit-scrollbar-track {
+      background: #0C0C0C;
+    }
+    
+    .reverse-shell-terminal::-webkit-scrollbar-thumb {
+      background-color: var(--accent-color);
+      border-radius: 4px;
+    }
+    
+    .reverse-shell-output {
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    
+    </style></head><body>
+    <div id="app" data-scroll-container>
+      <header class="py-6 fixed w-full z-50 bg-black bg-opacity-80">
+        <nav class="container mx-auto px-4">
+          <ul class="flex justify-center space-x-6">
+            <li><a href="#home" class="hover:text-accent transition-colors duration-300" data-scroll-to>[Home]</a></li>
+            <li><a href="#about" class="hover:text-accent transition-colors duration-300" data-scroll-to>[About]</a></li>
+            <li><a href="#projects" class="hover:text-accent transition-colors duration-300" data-scroll-to>[Projects]</a></li>
+            <li><a href="#reverse-shell" class="hover:text-accent transition-colors duration-300" data-scroll-to>[Reverse Shell]</a></li>
+            <li><a href="https://github.com/0xwn" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors duration-300">[GitHub] ☕</a></li>
+          </ul>
+        </nav>
+      </header>
+    
+      <main class="container mx-auto px-4">
+        <div class="content-wrapper">
+          <section id="home" class="h-screen flex items-center justify-center" data-scroll-section>
+            <div class="text-center">
+              <div class="terminal-window">
+                <div class="terminal-header">
+                  <div class="terminal-button close"></div>
+                  <div class="terminal-button minimize"></div>
+                  <div class="terminal-button maximize"></div>
+                </div>
+                <div class="terminal-content">
+                  <span class="terminal-prompt">whoami</span>
+                  <h1 class="terminal-effect mt-2" data-text="lgwn">lgwn</h1>
+                </div>
+              </div>
+              <p class="text-xl mt-4">Ethical Hacker | Security Researcher | Code Breaker</p>
+              <p class="easter-egg mt-4 text-xs">Psst... try typing 'matrix' anywhere on the page</p>
+              <a href="https://github.com/lgwn" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-accent hover:underline">Check out my GitHub ☕</a>
+            </div>
+          </section>
+    
+          <section id="about" class="py-20" data-scroll-section>
+            <h2 class="section-heading text-center">About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+              <div class="text-left">
+                <p class="mb-4">Greetings, netizen. I am lgwn, a digital ghost in the machine. My mission: to secure the digital frontier and push the boundaries of what's possible in cyberspace.</p>
+                <p>With a keyboard as my weapon and code as my armor, I navigate the treacherous waters of the information age, always one step ahead of those who would do harm.</p>
+                <p class="easter-egg mt-4 text-xs">Hidden message: Right-click and select 'Inspect' to find a secret</p>
+              </div>
+              <div class="text-left">
+                <h3 class="text-2xl font-bold mb-4">Skills</h3>
+                <ul class="list-none">
+                  <li class="mb-2 flex items-center">
+                    <svg class="w-4 h-4 mr-2 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    Penetration Testing
+                  </li>
+                  <li class="mb-2 flex items-center">
+                    <svg class="w-4 h-4 mr-2 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    Cryptography
+                  </li>
+                  <li class="mb-2 flex items-center">
+                    <svg class="w-4 h-4 mr-2 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    Network Security
+                  </li>
+                  <li class="mb-2 flex items-center">
+                    <svg class="w-4 h-4 mr-2 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    Reverse Engineering
+                  </li>
+                  <li class="mb-2 flex items-center">
+                    <svg class="w-4 h-4 mr-2 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    Social Engineering
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+    
+          <section id="projects" class="py-20" data-scroll-section>
+            <h2 class="section-heading text-center">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+              <div v-for="project in projects" :key="project.id" class="card">
+                <h3 class="text-2xl font-bold mb-2">{{ project.name }}</h3>
+                <p class="mb-4">{{ project.description }}</p>
+                <a :href="project.link" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-accent hover:underline">[View Project]</a>
+              </div>
+            </div>
+          </section>
+    
+          <section id="reverse-shell" class="py-20" data-scroll-section>
+            <div class="flex justify-center">
+              <div class="reverse-shell-terminal">
+                <div class="reverse-shell-output" v-html="reverseShellOutput"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    
+      <footer class="py-6 text-center">
+        <p>© {{ new Date().getFullYear() }} lgwn. All rights reserved. | Hack the planet responsibly.</p>
+        <p class="easter-egg mt-2 text-xs">There's more than meets the eye. Keep exploring.</p>
+        <a href="https://github.com/lgwn" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-accent hover:underline">GitHub ☕</a>
+      </footer>
+    
+      <canvas class="matrix-bg" ref="matrixCanvas"></canvas>
+      <div class="scroll-indicator" @click="scrollToNextSection"></div>
+      <div class="konami-code">↑↑↓↓←→←→BA</div>
+      <div class="secret-message">Congratulations, hacker! You've found a hidden message. Your skills are impressive.</div>
     </div>
-</body>
-</html>
+    
+    <script>
+    const { createApp, ref, onMounted } = Vue;
+    
+    createApp({
+      setup() {
+        const projects = ref([
+            { id: 2, name: 'xxx', description: 'xxx', link: 'https://github.com/0xwn' },
+          { id: 1, name: 'xxx', description: 'xxx', link: 'https://github.com/0xwn' },
+          { id: 3, name: 'xxx', description: 'xxx', link: 'https://github.com/0xwn' },
+        ]);
+    
+        const matrixCanvas = ref(null);
+        const reverseShellOutput = ref('');
+    
+        const scrollToNextSection = () => {
+          const sections = document.querySelectorAll('[data-scroll-section]');
+          const currentSection = Array.from(sections).find(section => {
+            const rect = section.getBoundingClientRect();
+            return rect.top <= 0 && rect.bottom > 0;
+          });
+          const nextSection = currentSection ? currentSection.nextElementSibling : sections[0];
+          if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        };
+    
+        const simulateReverseShell = () => {
+          const commands = [
+            'Establishing connection...',
+            'Connection established.',
+            'Reverse shell activated.',
+            'Enumerating system information...',
+            'OS: Kali Linux 2023.1',
+            'Kernel: 5.15.0-kali3-amd64',
+            'Hostname: h4ck3r-machine',
+            'User: root',
+            'Scanning for vulnerabilities...',
+            'Found 3 potential exploits.',
+            'Initiating privilege escalation...',
+            'Privilege escalation successful.',
+            'Accessing sensitive data...',
+            'Data exfiltration in progress...',
+            'Covering tracks...',
+            'Mission accomplished.',
+            'Disconnecting...',
+          ];
+    
+          let i = 0;
+          const interval = setInterval(() => {
+            if (i < commands.length) {
+              reverseShellOutput.value += commands[i] + '<br>';
+              i++;
+            } else {
+              clearInterval(interval);
+              setTimeout(() => {
+                reverseShellOutput.value = '';
+                simulateReverseShell();
+              }, 5000);
+            }
+          }, 1000);
+        };
+    
+        onMounted(() => {
+          const scroll = new LocomotiveScroll({
+            el: document.querySelector('[data-scroll-container]'),
+            smooth: true,
+          });
+    
+          const canvas = matrixCanvas.value;
+          const ctx = canvas.getContext('2d');
+    
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+    
+          const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+          const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+          const nums = '0123456789';
+          const alphabet = katakana + latin + nums;
+    
+          const fontSize = 16;
+          const columns = canvas.width / fontSize;
+    
+          const rainDrops = [];
+    
+          for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+          }
+    
+          const draw = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+    
+            for (let i = 0; i < rainDrops.length; i++) {
+              const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+              ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+    
+              if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                rainDrops[i] = 0;
+              }
+              rainDrops[i]++;
+            }
+          };
+    
+          setInterval(draw, 30);
+    
+          window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+          });
+    
+          // Easter Egg: Matrix effect
+          let typedString = '';
+          document.addEventListener('keydown', (e) => {
+            typedString += e.key.toLowerCase();
+            if (typedString.includes('matrix')) {
+              document.body.style.backgroundColor = '#000';
+              canvas.style.opacity = '1';
+              typedString = '';
+              setTimeout(() => {
+                document.body.style.backgroundColor = '';
+                canvas.style.opacity = '0.1';
+              }, 5000);
+            }
+            if (typedString.length > 10) {
+              typedString = typedString.slice(-10);
+            }
+          });
+    
+          // Easter Egg: Konami Code
+          const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+          let konamiIndex = 0;
+          document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+              konamiIndex++;
+              if (konamiIndex === konamiCode.length) {
+                document.querySelector('.secret-message').style.display = 'block';
+                setTimeout(() => {
+                  document.querySelector('.secret-message').style.display = 'none';
+                }, 5000);
+                konamiIndex = 0;
+              }
+            } else {
+              konamiIndex = 0;
+            }
+          });
+    
+          // Easter Egg: Console message
+          console.log("%cCongratulations, hacker!", "color: #00ff00; font-size: 20px; font-weight: bold;");
+          console.log("%cYou've discovered a hidden message. Your curiosity will serve you well in the world of cybersecurity.", "color: #00ff00; font-size: 14px;");
+    
+          // Start the reverse shell simulation
+          simulateReverseShell();
+        });
+    
+        return {
+          projects,
+          matrixCanvas,
+          scrollToNextSection,
+          reverseShellOutput,
+        };
+      },
+    }).mount('#app');
+    </script>
+    </body></html>
